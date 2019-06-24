@@ -12,7 +12,7 @@ namespace FriendStorage.UI.ViewModel
         private INavigationDataProvider _dataProvider;
         public NavigationViewModel(INavigationDataProvider dataProvider)
         {
-            Friends = new ObservableCollection<Friend>();
+            Friends = new ObservableCollection<FriendLookupItem>();
             _dataProvider = dataProvider;
         }
         public void Load()
@@ -24,7 +24,7 @@ namespace FriendStorage.UI.ViewModel
             }
         }
 
-        public ObservableCollection<Friend> Friends { get; private set; }
+        public ObservableCollection<FriendLookupItem> Friends { get; private set; }
 
         
     }

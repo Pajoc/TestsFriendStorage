@@ -19,10 +19,10 @@ namespace FriendStorage.UITests.ViewModel
             Assert.Equal(4, viewModel.Friends.Count());
             var friend = viewModel.Friends.SingleOrDefault(f => f.Id == 2);
             Assert.NotNull(friend);
-            Assert.Equal("Leonor", friend.FirstName);
+            Assert.Equal("Leonor Costa", friend.DisplayMember);
             friend = viewModel.Friends.SingleOrDefault(f => f.Id == 4);
             Assert.NotNull(friend);
-            Assert.Equal("Mário", friend.FirstName);
+            Assert.Equal("Mário Costa", friend.DisplayMember);
 
         }
 
@@ -39,12 +39,12 @@ namespace FriendStorage.UITests.ViewModel
 
         public class NavigationDataProviderMock : INavigationDataProvider
         {
-            public IEnumerable<Friend> GetAllFriends()
+            public IEnumerable<FriendLookupItem> GetAllFriends()
             {
-                yield return new Friend { Id = 1, FirstName = "Paulo" };
-                yield return new Friend { Id = 2, FirstName = "Leonor" };
-                yield return new Friend { Id = 3, FirstName = "Odete" };
-                yield return new Friend { Id = 4, FirstName = "Mário" };
+                yield return new FriendLookupItem { Id = 1, DisplayMember = "Paulo Costa" };
+                yield return new FriendLookupItem { Id = 2, DisplayMember = "Leonor Costa" };
+                yield return new FriendLookupItem { Id = 3, DisplayMember = "Odete Costa" };
+                yield return new FriendLookupItem { Id = 4, DisplayMember = "Mário Costa" };
             }
         }
     }
