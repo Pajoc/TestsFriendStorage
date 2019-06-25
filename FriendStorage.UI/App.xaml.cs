@@ -1,16 +1,27 @@
-﻿using FriendStorage.UI.View;
+﻿using FriendStorage.DataAccess;
+using FriendStorage.UI.DataProvider;
+using FriendStorage.UI.Startup;
+using FriendStorage.UI.View;
 using FriendStorage.UI.ViewModel;
 using System.Windows;
+using Autofac;
 
 namespace FriendStorage.UI
 {
-  public partial class App : Application
-  {
+    public partial class App : Application
+    {
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
+            var bootStrapper = new BootStrapper();
+            var container = bootStrapper.BootStrap();
 
-            var mainWindow = new MainWindow(new MainViewModel());
+            //var mainWindow = new MainWindow(new MainViewModel(
+            //    new NavigationViewModel(
+            //        new NavigationDataProvider(
+            //         () => new FileDataService()))));
+
+            var mainWindow = container.Resolve<MainWindow>();
             mainWindow.Show();
         }
     }
